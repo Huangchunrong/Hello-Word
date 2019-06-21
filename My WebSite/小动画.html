@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>动画</title>
+	<script type="text/javascript"></script>
+	<style type="text/css">
+		 .demo,.img,.mask,.border{
+			   width: 200px;
+			   height: 200px;
+			   border-radius:50%;
+		 }
+		 .demo{
+			position:relative;
+			display:block;
+		 }
+		 .img{
+			background-size: over;
+			background-position: 50% 50%;
+		 }
+		 .mask,.border{
+			position: absolute;
+			left: 0;
+			top: 0;
+		 }
+		 .mask{
+			text-align: center;
+			transition: all .5s ease-in;
+		 }
+		 .info{
+			margin-top: 50%;
+			transform: translateY(-50%);
+		 }
+		 .border{
+			border: 5px solid #072255;
+			border-left-color: #e07514;
+			border-top-color: #e07514;
+			box-sizing: border-box;
+		 }
+		 .demo:hover .mask{
+			background-color: rgb(0,0,0,.5);
+			color: rgb(255,255,255,1);
+		 }
+		 .demo:hover .border{
+			transform: rotate(180deg);
+			transition: all .5s ease-in;
+		 }
+	</style>
+</head>
+<body>
+	<a href="#" class="demo">
+	<div class="img"  style="background-image: url(images/bg.png);"></div>
+	<div class="mask">
+		  <div class="info">
+			  <h3>BEATIFULL DAY</h3>
+			  <P>Description goes here</P>
+		  </div>     
+	</div>
+	<div class="border"></div>
+	 </a>
+</body>
+</html>

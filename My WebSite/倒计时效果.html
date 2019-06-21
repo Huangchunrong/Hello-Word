@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>倒计时效果 限时抢</title>
+	<style>
+		#shoptime{
+			width: 800px;
+			height: 50px;
+			border:2px solid  red;
+			margin:0 auto;
+			text-align: center;
+			position: relative;
+		}
+		 #shoptime a{
+				line-height: 50px;
+				text-decoration: none;
+				color: black;
+		 }
+		 .dy{
+		 	position: absolute;
+		 	top: 50px;
+		 	right:0px;
+		 }
+	</style>
+	<script type="text/javascript">
+	     window.onload=function(){
+	     	function showtime(){
+
+	     		var endtime = new Date("2018,12,12");
+                // 获取现在的时间
+	     		var nowtime = new Date();
+	     		var year = nowtime.getFullYear();
+	     		var month = nowtime.getMonth()+1;
+	     		var day = nowtime.getDate();
+	     		var hour = nowtime.getHours();
+	     		var minutes = nowtime.getMinutes();
+	     		var seconds = nowtime.getSeconds();
+	     		var xq = nowtime.getDay();
+	     		// 星期的处理
+	     		var  week = new Array(7)
+	     		     week[0]="星期日"
+	     		     week[1]="星期一"
+	     		     week[2]="星期二"
+	     		     week[3]="星期三"
+	     		     week[4]="星期四"
+	     		     week[5]="星期五"
+	     		     week[6]="星期六"
+
+	     		var lasttime = endtime.getTime()-nowtime.getTime();
+	     		// console.log(lasttime); 
+	     		 var d = parseInt(lasttime/(24*60*60*1000));
+	     		 var h = parseInt(lasttime/(60*60*1000)%24);
+	     		 var m = parseInt(lasttime/(60*1000)%60);
+	     		 var s = parseInt(lasttime/1000%60);
+	     		  m = check(m);
+	     		  s = check(s);
+	     		  minutes = check(minutes);
+	     		  seconds = check(seconds);
+
+	     		document.getElementById("time").innerHTML = d+"天"+h+"小时"+m+"分钟"+s+"秒";
+	     		document.getElementById("today").innerHTML = year +"年"+month+"月"+day+"日"+hour+"时"+minutes+"分"+seconds+"秒"+"、"+week[xq];
+	     		if(lasttime<=0){
+	     			document.getElementById("time").innerHTML="团购已结束";
+	     			clearInterval(timer);
+	     		}
+
+	     	}
+	     	    showtime();
+	     	    var timer=setInterval(showtime,500);
+
+	     	   function check(i){
+	     	     	
+	     	   	   if(i<10){
+	     	   	   	  i="0"+i;
+	     	   	   }
+	     	   	    return i;
+	     	   }  
+
+	}
+	</script>
+</head>
+<body>
+	<div id="shoptime">
+		<a href="">距离活动结束还有：<span id="time"></span></a>
+		<span class="dy">今天的日期是：<span id="today"></span></span>	
+	</div>
+	
+</body>
+</html>

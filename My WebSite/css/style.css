@@ -1,0 +1,81 @@
+/*javascript 回到顶部效果*/
+.box{
+	width: 1190px;
+	margin: 0 auto;
+}
+#btn{
+	width: 40px;
+	height: 40px;
+	position: fixed;
+	left:50%;
+	bottom: 30px;
+	background: url(images/top_bg.png) no-repeat left  top ;
+	margin-left: 610px;
+	display: none;
+	
+}
+#btn:hover{
+	background: url(images/top_bg.png) no-repeat left -40px;
+}
+
+/*选项卡切换*/
+
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 12px;
+ }
+ .contain{
+	width: 298px;
+	height: 98px;
+	margin: 10px;
+	border:1px solid #eee;
+	overflow: hidden;
+ }
+ .contain-tit{
+	height: 27px;
+	position: relative;
+	background: #f7f7f7;
+ }
+ .contain-tit ul{
+	position: absolute;
+	width: 301px;
+	left: -1px;
+ }
+ .contain-tit li{
+	float: left;
+	width: 58px;
+	height: 26px;
+	line-height: 26px;
+	text-align: center;
+	overflow: hidden;
+	background: #fff;
+	padding: 0 1px;
+	border-bottom:1px solid #eee;
+	background: #f7f7f7;
+ }
+ .contain-tit  li.select{
+	background: #fff;
+	border-bottom-color: #fff;
+	border-left: 1px solid #eee;
+	border-right:1px solid #eee;
+	padding: 0;
+ }
+ .contain li a:link,.contain-tit li a:visited{
+	text-decoration: none;
+	color: #000;
+ }
+ .contain li a:hover{
+	color: #f90;
+ }
+
+ .contain-non .mod{
+ 	margin:10px 10px 10px 19px;
+ }
+ .contain-non ul li {
+ 	width: 134px;
+ 	height: 25px;
+ 	float: left;
+ 	overflow: hidden;
+ }

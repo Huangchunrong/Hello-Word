@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽效果</title>
+	<script type="text/javascript" src="js/drag.js"></script>
+	<style type="text/css">
+		body{
+			margin:0;
+			padding: 0;
+		}
+		#box{
+			position: absolute;
+			width:400px;
+			height:340px;
+			border:1px solid blue;
+			top:150px;
+			left:520px;
+		}
+		#header{
+			width: 400px;
+			height:180px;
+			background:url(images/b1.png);
+			text-align: center;
+			line-height: 180px;
+			
+		}
+		#header img{
+			vertical-align: middle;		
+		}
+		#content{
+			margin:0 auto;
+			width: 400px;
+			height: 160px;
+			/*text-align: center;*/
+		}
+		#content .lt{
+			width: 120px;
+			height: 160px;
+			float: left;
+		}
+		#content .rt {
+			float: right;
+			width: 280px;
+			height: 160px;
+		}
+		#piture{
+			width:80px;
+			height:80px;
+			display: inline-block;
+			border:1px solid grey;
+			border-radius: 50%;
+			overflow: hidden;
+			margin-left: 20px;
+			margin-top: 20px;
+		}
+		#piture img{
+			width: 90px;
+			height: 90px;
+		}
+		.rt .one{
+			margin-top:20px; 
+			width: 175px;
+			height: 25px;
+		}
+		.rt .two{
+			width: 175px;
+			height: 25px;
+		}
+		.rt a{
+			text-decoration-line: none;
+			margin-left: 10px;
+			font-size: 14px;
+			color: blue;
+		}
+		.rt .a1{
+			margin-top: 5px;
+		}
+		.rt span{
+			font-size: 14px;
+			color: gray;
+		}
+		.rt .three{
+			width: 180px;
+			height: 30px;
+			background-color:#3399ff;
+			margin-top: 10px;
+			border-radius: 5px;
+			text-align: center;
+			line-height: 30px;
+			color: white;
+		}
+		.rt .three:hover{
+			background-color:#00ccff;
+		}
+		
+		.li {
+		    width: 100px;
+			height: 150px;
+			border: 1px solid blue;
+			background-color: grey;
+			position: absolute;
+			top:400px;
+		}
+		.li li{
+			height: 30px;
+			width: 100px;
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="header" class="htop">
+				<img src="images/QQ.png">
+		</div>
+	 <div id="content">	
+	    <div  class="lt">    
+		 <a id="piture">
+		     <img src="images/bg.png">
+		 </a>
+		 </div>  
+		 <div class="rt">
+		     <input type="user" name="账号" class="one"><a href="#">账号注册</a></br>
+		     <input type="password" name="密码" class="two"><a href="#">找回密码</a></br>
+		     <input type="checkbox" class="a1" name=""><span>自动登录</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="a1" name=""><span>记住密码</span></br>
+		    <div class="three">安全登录</div>
+
+		 </div>	
+		 <div class="li" style="display: none">
+
+				<a><img src="images/on.png" alt=""><span>我在线上</span></a></br>
+				<a><img src="images/no.png" alt=""><span>请勿打扰</span></a></br>
+				<a><img src="images/leave.png" alt=""><span>离开</span></a></br>
+				<a><img src="images/busy.png" alt=""><span>忙碌</span></a></br>
+				<a><img src="images/hide.png" alt=""><span>隐身</span></a></br>
+				<a><img src="images/laugh.png" alt=""><span>请Q我吧</span></a>
+		
+		 </div>
+	 </div>	
+	</div>
+</body>
+</html>

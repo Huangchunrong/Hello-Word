@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bing search</title>
+	<script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+	<script type="text/javascript">
+	  $(document).ready(function(){
+	   $(".search-input-text").bind('keyup',function(){
+	   		$(".Ts").show();
+	   });
+
+
+	  
+	});
+	</script>
+	<style type="text/css">
+		body{
+			/*margin: 0;
+			padding: 0;*/
+			background-color:#333; 
+		}
+		.bg-div{
+			background-image: url(images/bgA.jpg);
+			background-repeat: no-repeat;
+			width: 1350px;
+			height:620px;
+			margin: 0 auto;
+			/*position: relative;*/
+		}
+		.logo{
+			background-image: url(images/binglogo.png);
+			background-repeat: no-repeat;
+			background-size: contain;
+			width: 150px;
+			height: 60px;
+			opacity: 0.5;
+			float: left;
+			margin-right: 10px;
+		}
+		form{
+			float: left;
+			background-color: #fff;
+		}
+		.search-input-text{
+				border:0;
+				height: 50px;
+				width: 350px;
+				padding:5px;
+		}
+		.search-input-button{
+			    background-image: url(images/Sicon.png);
+			    background-repeat: no-repeat;
+			    background-size: contain;
+				height: 50px;
+				width: 50px;
+				border:0;	
+		}
+		.wrap{
+			position: absolute;
+			top: 200px;
+			left:300px;
+		}
+		.Ts{
+			width: 414px;
+			background-color:#fff;
+			position: absolute;
+			top:261px;
+			left:460px;
+		}
+		.Ts ul{
+			margin:0;
+			padding:0;
+		}
+		.Ts ul li{
+			text-decoration:none;
+			list-style: none;
+			
+			padding:5px;
+
+		}
+		.Ts ul li:hover{
+			cursor:pointer;
+			background-color: #e5e5e5;
+			border:1px solid #999;
+					}
+	</style>
+	
+</head>
+<body>
+	 <div class="bg-div">
+	 <div class="wrap">
+	 	<div class="logo"></div>
+		<form id="form-input">
+			<input type="text" name="search" class="search-input-text">
+			<input type="submit" name="button" class="search-input-button" value=" ">
+		</form>
+		</div>	
+	 <div class="Ts" style="display: none" >
+		<ul>
+			<li>搜索事件1</li>
+			<li>搜索事件2</li>
+			<li>搜索事件3</li>
+			<li>搜索事件4</li>
+		</ul>
+	 </div>
+	
+	 </div>
+
+	
+</body>
+</html>

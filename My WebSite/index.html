@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+</head>
+<body  onload="startTime()">
+<!-- 捕获并抛出异常 -->
+<!-- <script>
+ 	function myfunction(){
+ 		try{
+ 		var  x= document.getElementById("demo").value;
+ 		if(x==""){
+ 			throw "empty";
+ 		}
+ 		 if(x>20){
+ 			throw "太大";
+ 		}
+ 		if(x<10){
+ 			throw "太小";
+ 		}
+ 		if(isNaN(x)){
+ 			throw "不是一个数字";
+ 		}
+ 		}catch(err){
+ 			var  y= document.getElementById("de");
+ 			 y.innerHTML="这是一个错误:"+err+".";
+
+
+ 		}
+ 		
+ 	}
+</script>
+	<h1>下面是一个输入框</h1>
+	<input type="text" name="input" id="demo">
+	<button type="botton" onclick="myfunction()">点击这里</button> 
+	<p id="de"></p>
+	 -->
+
+<!-- 添加、删除标签  通过class获取标签 -->
+<!-- <script type="text/javascript">
+   window.onload=function(){
+   	// 添加新标签
+	var add=document.createElement("h2");
+	var  txt=document.createTextNode("我是新添加的文本");
+	     add.appendChild(txt);
+	     
+	  var element=document.getElementById("di");
+	   // console.log(element);
+	    	    element.appendChild(add);
+    // 删除标签
+   var  pare=document.getElementById("di");
+   var  chd=document.getElementById("de");
+      pare.removeChild(chd);
+}
+	 function myfunction(){
+	 	var a = document.getElementsByClassName("demo");
+	 	// console.log(a);
+	 	a[0].innerHTML="改变后的标题长这样子";
+
+	 }	
+	 </script>
+
+	<div id="di">
+	 <h1 class="demo">这是一个标题</h1>
+	 <h2  id="de">你知道我是第几行么</h2>	
+	 <p id="da"></p>
+	</div>
+<button type="button" onclick="myfunction()">点击这里</button>  -->
+
+
+<!-- 简单的计时事件 -->
+<!-- <script type="text/javascript">
+	var x=0;
+	var  y;
+ 	function start(){
+ 		document.getElementById("test").value=x;
+ 		x=x+1;
+ 		y=setTimeout("start()",1000);
+ 	}
+ 	function stop(){
+ 		x=0;
+ 		setTimeout("document.getElementById('test').value=0",0);
+ 		clearTimeout(y);
+ 		var w;
+ 		w=document.getElementById("test").value;
+ 		document.getElementById("show").innerHTML=w;
+ 	}
+</script>
+   <button type="button" ="di" onclick="start()">开始计时</button>
+   <input type="text" name="txt" id="test">   
+   <button type="button" ="di" onclick="stop()">结束计时</button>
+   <div>用时：<span id="show"></span>&nbsp;&nbsp;&nbsp;秒</div>
+
+ -->
+
+ <!-- 简单的计时事件制作的钟表 -->
+<!-- <script type="text/javascript">
+	var i;
+	function  startTime(){
+		var  today = new Date();
+		var  h=today. getHours();
+		var  m=today. getMinutes();
+		var  s=today. getSeconds();
+		  h=checktime(h);
+		  m=checktime(m);
+		  s=checktime(s);
+		document.getElementById("show").innerHTML=h+':'+m+':'+s;
+		setTimeout("startTime()",500);
+	}
+	function checktime(i){
+		if (i<10){
+			i="0"+i;
+		}
+		return i;
+	}
+</script>
+  <div id="show" ></div> -->
+
+
+  <!-- 向元素添加类 -->
+<script type="text/javascript">
+   	$(document).ready(function(){
+ 		$("button").click(function(){
+ 			$("h1,h2,p").addClass("demo");
+ 			$("div").addClass("important");
+ 		});
+   	});
+
+</script>
+  <style type="text/css">
+      .demo{
+      	color:blue;
+      }
+	  .important{
+	  	font-weight: bold;
+	  	font-size: 40px;
+	  }
+  </style>
+
+  <h1>这是第一个标题</h1>
+  <h2>这是第二个标题</h2>
+  <p>这是第一个段落</p>
+  <div>向元素添加类 这很重要</div>
+  <button>添加类</button>
+</body>
+</html>

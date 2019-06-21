@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js原生轮播图</title>
+	<!-- <script type="text/javascript" src="javascript.js"></script> -->
+	<style type="text/css">
+		body,ul,li{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			
+		}
+		.container{
+			width: 600px;
+			height: 350px;
+			overflow: hidden; 
+			position: relative;
+			margin: 0 auto;
+		}
+		ul{
+			position: absolute;
+			width: 3600px;
+			height: 350px;
+
+		}
+		
+		.container ul li{
+			float: left;
+					}
+
+		.poster-item img{
+				width: 600px;
+				height: 350px;
+		}
+		
+		.circle{
+			position: absolute;
+			height: 15px;
+			width: 100px;
+			left: 50%;
+			margin-left: -30px;
+			top:320px;
+			
+		   
+		}
+		span{
+			display: block;
+			width: 15px;
+			height: 15px;
+			background: #333;
+			float: left;
+			margin-right: 10px;
+			position: relative;
+			border-radius:50%;
+					}
+		.circle  #on{
+			background: orange;
+		}
+		.poster-btn{
+			width: 30px;
+			height: 30px;
+			background:gray;
+			text-align:center;
+			line-height: 30px;
+			cursor: pointer;
+			/*display: none;*/
+		}
+		.container:hover +.poster-btn{
+			/*display: block;*/
+		}
+		.poster-prev-btn{
+			position: absolute;
+			top:170px;
+			left: 400px;
+		}
+		.poster-next-btn{
+			position: absolute;
+			top:170px;
+			right: 400px;
+
+		}
+		
+		
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var wid= document.getElementById("wrap");
+		var prev= document.getElementById("pre");
+		var next= document.getElementById("nex");
+		 // alert(wid.style.left);
+		function Start(x){
+			var length=parseInt(wid.style.left)+x;
+		
+			     wid.style.left = length+"px";
+				if(length>-600){
+					wid.style.left = -2400+"px";
+				}
+				if(length<-2400){
+					wid.style.left = -600+"px";
+				}
+				
+			}
+						
+		prev.onclick=function(){
+			Start(600);
+		  }
+	
+		next.onclick =function(){
+			Start(-600);
+		}
+		// 设置定时器
+		 var timer;
+		 function play(){
+			timer=setInterval(function(){
+				next.onclick();
+			},1500);
+		 }
+		 play();
+
+		 // 获取轮播区域 设置鼠标悬浮停止效果
+		var contain=document.getElementById("container-1");
+			function stop(){
+				clearInterval(timer);
+			}
+		 contain.onmouseover = stop;
+		 contain.onmouseout = play;
+
+	// 设置小原点 随左右点击移动
+		 var  circle = document.getElementsByClassName("circle-btn");
+		 var  count=1;
+			function  showCircle(){
+				for(var i=0;i<circle.length;i++){
+					if(circle[i].id="on"){
+						circle[i].id=" ";
+					}
+				}
+				circle[count-1].id="on";
+			}
+
+			prev.onclick=function(){
+				count-=1;
+				if(count<1){
+					count=4;
+				}
+				showCircle();
+				Start(600);
+			}
+			next.onclick=function(){
+				count+=1;
+				if(count>4){
+					count=1;
+				}
+				showCircle();
+				Start(-600);
+			}
+
+  // 点击小圆点跳到对应图片
+	   for(var i=0;i<circle.length;i++){
+		 (function(i){
+			circle[i].onclick = function(){
+				console.log(count);
+				var clickindex = parseInt(this.getAttribute('index'));
+				// console.log(this);
+				var offset = -600*(clickindex-count);
+				Start(offset);
+				count=clickindex;
+				showCircle();
+			}
+		  })(i);
+	   }
+
+	}
+	</script>
+</head>
+<body>
+<div  class="container" id ="container-1">
+		<ul id="wrap" style="left: -600px">
+			<li class="poster-item"><a href=""><img class="b" src="images/bg5.jpg"></a></li>
+			<li class="poster-item"><a href=""><img class="b" src="images/bg2.jpg" ></a></li>
+			<li class="poster-item"><a href=""><img class="b" src="images/bg3.jpg"></a></li>
+			<li class="poster-item"><a href=""><img class="b" src="images/bg4.jpg"></a></li>
+			<li class="poster-item"><a href=""><img class="b" src="images/bg5.jpg"></a></li>
+			
+		</ul>
+ </div>
+<div class="circle">
+		<span index="1" class="circle-btn " id="on" ></span>
+		<span index="2" class="circle-btn"></span>
+		<span index="3" class="circle-btn"></span>
+		<span index="4" class="circle-btn"></span>
+	</div>
+<div class="poster-btn poster-prev-btn" id="pre">&lt;</div>
+<div class="poster-btn poster-next-btn" id="nex">&gt;</div>
+</body>
+</html>

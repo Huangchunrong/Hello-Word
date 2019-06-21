@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网页定位导航</title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	body{
+		font-size: 12px;
+		line-height: 1.7;
+	}
+	li{
+		list-style: none;
+	}
+	#content{
+		width: 800px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+	#content h1{
+		color: #0088bb;
+	}
+	.item{
+		padding: 20px;
+		border:1px dotted #0088bb;
+		margin-bottom: 20px;
+	}
+	.item h2{
+		font-size: 16px;
+		font-weight: bold;
+		border-bottom: 2px solid  #0088bb;
+		margin-bottom: 10px;
+	}
+	.item li{
+		display: inline;
+		margin-right: 5px;
+		margin-left: 5px;
+	}
+
+	.item li img{
+		width: 240px;
+		height: 240px;
+		border:none;	
+	}
+	#menu{
+		position: fixed;
+		left: 50%;
+		margin-left: 400px;
+		top:150px;
+		font-weight: bold;
+
+	}
+	#menu ul li a{
+		display: block;
+		font-size: 14px;
+		font-weight: bold;
+		color:#333;
+		margin: 5px 0;
+		/*border:1px solid #0088bb;*/
+		width: 80px;
+		height:50px;
+		text-decoration: none;
+		line-height: 50px;
+		text-align: center;
+	}
+	#menu ul li a:hover,
+	#menu ul li a.current{
+		color: #fff;
+		background:  #0088bb; 
+	}
+	.cover{
+		width: 100%;
+		display: none;
+		position:absolute;
+		top:0;
+		left:0;
+		background: #000;
+		opacity: 0.5;
+		z-index:1;
+	}
+	.img{
+		display: none;
+		width: 300px;
+		height:300px;
+		position:fixed;
+		left:40%;
+		top:20%;
+		z-index:5;
+		border-radius: 5px;
+	}
+	.img a{
+		width: 300px;
+		height:300px;
+		position:relative;
+		display: inline-block;
+	}
+	.img span{
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		border-radius:50%;
+		top:5px;
+		right: 5px;
+		background: #eee;
+		display: inline-block;
+		text-align: center;
+		line-height: 20px;
+		font-size: 12px;
+		cursor:pointer;
+	}
+	</style>
+</head>
+<body>
+    <div class="cover"></div>
+    <div class="img">
+        <a href="#"><img src="images/bg.png"></a>
+        <span>X</span>
+    </div>
+  	<div id = "menu">
+		<ul>
+			<li ><a href="#item1" class = "current">1F 男装</a></li>
+			<li><a href="#item2">2F 女装</a></li>
+			<li><a href="#item3">3F 母装</a></li>
+			<li><a href="#item4">4F 时尚</a></li>
+			<li><a href="#item5">5F 精品</a></li>
+		</ul>
+  	</div>
+  	<div id = content>
+		<h1>精品购物网</h1>
+		<div class = "item" id="item1">
+			<h2>1F 男装</h2>
+			<ul>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+			</ul>
+		</div>
+		<div class = "item" id="item2">
+			<h2>2F 女装</h2>
+			<ul>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+			</ul>
+		</div>
+		<div class = "item" id="item3">
+			<h2>3F 母婴</h2>
+			<ul>
+				<li><a href=""><img src="images/shop3.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop3.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop3.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop3.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop3.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop3.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop3.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop3.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop3.png" alt=""></a></li>
+			</ul>
+		</div>
+		<div class = "item" id="item4">
+			<h2>4F 时尚</h2>
+			<ul>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop.png" alt=""></a></li>
+			</ul>
+		</div>
+		<div class = "item" id="item5">
+			<h2>5F 精品</h2>
+			<ul>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+				<li><a href=""><img src="images/shop1.png" alt=""></a></li>
+			</ul>
+		</div>
+
+  	</div>
+<script src = "js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	    $(document).ready(function(){
+	    	function show(){
+	    		$(".img").show();
+	    		$(".cover").css("display","block");
+	    		$(".cover").css("height",document.body.clientHeight+"px");
+	    	}
+	    	function hide(){
+	    		$(".img").hide();
+	    		$(".cover").css("display","none");
+	    	}
+	    	show();
+	    	$("span").click(function(){
+	    		hide();
+	    	});
+	    	//滚动条发生滚动
+	    	$(window).scroll(function(){
+	    		//滚动条距离顶部的距离
+	    		var top = $(document).scrollTop();
+	    		// console.log(top);
+	    		var menu = $("#menu");
+	    		var items = $("#content").find(".item");
+	    		var currentId = " "; //获取当前item的id
+	    		items.each(function(){
+	    			var m = $(this);
+	    			//每一个当前item距离顶部的距离
+	    			var itemTop = m.offset().top;
+	    			// console.log(itemTop);
+	    			if(top > itemTop-100){
+	    				currentId = "#" + m.attr("id");
+	    				// console.log(currentId);
+	    			}else{
+	    				return false;
+	    			}
+	    		});
+	    		//给相应的 a 设置current样式
+	    		var currentlink = menu.find(".current");
+	    		    if(currentId&&currentlink.attr("href") != currentId){
+	    		    	currentlink.removeClass("current");
+	    		    	//通过属性选择 貌似版本严格了字符串的使用
+	    		    	menu.find("[href='"+currentId +"']").addClass("current");
+	    		    }
+	    	});
+	    });
+</script>	
+</body>
+</html>
