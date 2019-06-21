@@ -1,0 +1,29 @@
+1 .上传文件的步骤命令
+
+git init  初始化文件夹使得文件夹可以被git管理
+
+git add . 添加所有文件   .号代表所有  还有一个添加单个文件 git add "文件名"
+
+git commit -m "操作描述"    就是操作描述
+
+git remote origin https://github.com/Huangchunrong/Hello-Word.git   关联GitHub的库 就是上传到哪里目标位置
+
+如果库里有文件那就先合并远程库与本地库
+git pull --rebase origin master
+
+git push -u origin master
+
+2 .删除某个文件或文件夹
+在github上只能删除仓库,却无法删除文件夹或文件, 所以只能通过命令来解决
+
+首先进入你的master文件夹下, Git Bash Here ,打开命令窗口
+
+$ git pull origin master 将远程仓库里面的项目拉下来
+
+$ dir  查看有哪些文件夹
+
+$ git rm -r --cached target  删除target文件夹
+$ git commit -m '删除了target'  提交,添加操作说明
+
+$ git push -u origin master 将本次更改更新到github项目上去
+
