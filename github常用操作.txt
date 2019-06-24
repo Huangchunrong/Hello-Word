@@ -6,7 +6,7 @@ git add . 添加所有文件   .号代表所有  还有一个添加单个文件 git add "文件名"
 
 git commit -m "操作描述"    就是操作描述
 
-git remote origin https://github.com/Huangchunrong/Hello-Word.git   关联GitHub的库 就是上传到哪里目标位置
+git remote add origin https://github.com/Huangchunrong/Hello-Word.git   关联GitHub的库 就是上传到哪里目标位置
 
 如果库里有文件那就先合并远程库与本地库
 git pull --rebase origin master
