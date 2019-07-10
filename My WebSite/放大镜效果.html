@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜效果 Javascript版</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #demo{
+            width: 300px;
+            height: 250px;
+            border: 1px solid #ccc;
+            margin: 50px;
+            position:relative;
+        }
+        #smallbox{
+            position: relative;
+            z-index: 1;
+            width: 300px;
+            height: 250px;
+        }
+        #smallbox img{
+            height: 100%;
+            width: 100%;
+        }
+        #floatbox{
+            display:none;
+            width: 160px;
+            height: 120px;
+            position: absolute;
+            background: #94c0be;
+            opacity:0.5;
+            cursor: move;
+        }
+        #markbox{
+            width: 300px;
+            height: 250px;
+            position: absolute;
+            background: #fff;
+            opacity:0;
+            z-index: 10;
+            cursor: move;
+        }
+        #bigbox{
+            display: none;
+            width: 400px;
+            height: 300px;
+            position: absolute;
+            left: 460px;
+            top: 0;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+        #bigbox img{
+            position: absolute;
+        }
+        #list ul{
+            height: 150px;
+        }
+        #list ul li{
+            list-style: none;
+            float: left;
+            height: 40px;
+            width: 40px;
+            margin-right:10px ;
+            border: 2px solid #fff;
+        }
+        #list ul li:first-child{
+            margin-left: 50px;
+        }
+        #list ul li img{
+            width: 100%;
+            height: 100%;
+        }
+        #list ul li:hover{
+            border: 2px solid red;
+            width: 42px;
+            height: 43px;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div id="smallbox">
+            <div id="floatbox"></div>
+            <div id="markbox"></div>
+            <img id="img1" src="images/bg6.JPG">
+        </div>
+        <div id="bigbox">
+            <img id="img2" src="images/bg6f.JPG">
+        </div>
+    </div>
+    <div id = list>
+        <ul>
+            <li id="t1"><img src="images/bg6.JPG"></li>
+            <li id="t2"><img src="images/bg7.JPG"></li>
+            <li id="t3"><img src="images/bg8.JPG"></li>
+            <li id="t4"><img src="images/bg9.JPG"></li>
+            <li id="t5"><img src="images/bg10.JPG"></li>
+        </ul>
+    </div>
+<script>
+    window.onload = function () {
+        var objdemo = document.getElementById("demo");
+        var objsmallbox = document.getElementById("smallbox");
+        var objfloatbox = document.getElementById("floatbox");
+        var objmarkbox = document.getElementById("markbox");
+        var objbigbox = document.getElementById("bigbox");
+        var o = document.getElementsByTagName("img")[1];
+            console.log(o);
+        objmarkbox.onmouseover = function(){
+            objfloatbox.style.display = "block";
+            objbigbox.style.display = "block";
+        }
+        objmarkbox.onmouseout = function(){
+            objfloatbox.style.display = "none";
+            objbigbox.style.display = "none";
+        }
+        objmarkbox.onmousemove = function(ev){
+            var _event = ev || window.event;
+            //计算放大镜遮罩的位置 也就是左边框和上边框到父盒子的边框的距离；
+            // _event.clientX 是鼠标对应的x坐标
+            var left = _event.clientX - objdemo.offsetLeft - objsmallbox.offsetLeft - objfloatbox.offsetWidth/2;
+            var top = _event.clientY - objdemo.offsetTop - objsmallbox.offsetTop -objfloatbox.offsetHeight/2;
+                // console.log(objsmallbox.offsetLeft);
+            //判断放大镜遮罩只能在父盒子里移动
+            if(left < 0){
+                left = 0;
+            }else if(left > objsmallbox.offsetWidth - objfloatbox.offsetWidth){
+                left = objsmallbox.offsetWidth - objfloatbox.offsetWidth;
+            }
+            if(top < 0){
+                top = 0;
+            }else if(top > objsmallbox.offsetHeight - objfloatbox.offsetHeight){
+                top =  objsmallbox.offsetHeight - objfloatbox.offsetHeight;
+            }
+            //让放大镜遮罩随鼠标移动
+            objfloatbox.style.left = left + "px";
+            objfloatbox.style.top = top + "px";
+            // 根据比例等式计算放大部分的移动距离 并使之移动
+            var persentX = left/(objsmallbox.offsetWidth - objfloatbox.offsetWidth);
+            var persentY = top/(objsmallbox.offsetHeight - objfloatbox.offsetHeight);
+             // console.log(persentY);
+            o.style.left = -persentX * (o.offsetWidth - objbigbox.offsetWidth) + "px";
+            o.style.top = -persentY * (o.offsetHeight - objbigbox.offsetHeight) + "px";
+            console.log(o.style.left);
+
+        //    给每一个li添加鼠标移入事件
+            var c1 = document.getElementById("t1");
+            var c2 = document.getElementById("t2");
+            var c3 = document.getElementById("t3");
+            var c4 = document.getElementById("t4");
+            var c5 = document.getElementById("t5");
+
+            var th = document.getElementById("img1");
+            var thb = document.getElementById("img2");
+            c1.onmouseover = function(){
+                th.src = "images/bg6.JPG";
+                thb.src = "images/bg6.JPG"
+            }
+            c2.onmouseover = function(){
+                th.src = "images/bg7.JPG";
+                thb.src = "images/bg7.JPG"
+            }
+            c3.onmouseover = function(){
+                th.src = "images/bg8.JPG";
+                thb.src = "images/bg8.JPG"
+            }
+            c4.onmouseover = function(){
+                th.src = "images/bg9.JPG";
+                thb.src = "images/bg9.JPG"
+            }
+            c5.onmouseover = function(){
+                th.src = "images/bg10.JPG";
+                thb.src = "images/bg10.JPG"
+            }
+        }
+    }
+</script>
+</body>
+</html>

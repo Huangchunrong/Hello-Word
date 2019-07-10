@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单列表</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <style type="text/css">
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            font:15px/1.5 "Microsft YaHei";
+            color:#5e5b64;
+            text-align: center;
+        }
+        a,a:visited{
+            outline: none;
+            color: #3399ff;
+        }
+        a:hover{
+            text-decoration:none;
+        }
+        section,footer,header,aside,nav{
+            display:block;
+        }
+        form{
+            width: 400px;
+            background-color: #65caeb;
+            margin: 50px auto;
+            padding: 30px 60px;
+            border-radius: 2px;
+            box-shadow:0 1px 1px #ccc;
+        }
+        form h1{
+            color: #fff;
+            font-size:30px;
+            font-family: cursive;
+            font-weight: normal;
+            line-height: 1;
+            text-shadow: 0 3px 0 rgba(0,0,0,1);
+        }
+        form ul{
+            list-style: none;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin:10px 0 15px ;
+        }
+        form ul li{
+            padding: 20px 30px;
+            background-color: #eb4035;
+            margin-bottom: 10px;
+            box-shadow:0 1px 1px rgb(0, 0, 0);
+            cursor: pointer;
+            text-align:left ;
+        }
+        .active{
+            background-color: #38ff35;
+        }
+        form ul li span{
+            float: right;
+        }
+        #total{
+            border-top: 1px solid #fff;
+            padding: 20px 30px;
+            font-size:20px;
+            font-weight: bold;
+            text-align: left;
+            color: #fff;
+        }
+        #total span{
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+     <form id="form-list">
+         <h1>SERVICES AND THE PRICE</h1>
+         <ul>
+             <li v-for="item in services_price" v-bind:class="{'active':item.active}"
+             v-on:click="changeclass(item)">
+                 {{item.name}}<span>{{item.price | addString}}</span>
+             </li>
+         </ul>
+         <div id="total">
+             Total:<span>{{ totalPrice() | addString}}</span>
+         </div>
+     </form>
+     <script type="text/javascript">
+         Vue.filter("addString",function(sm){
+             return sm = "$" + sm.toFixed(2);
+         })
+         var FL = new Vue({
+             el: "#form-list",
+             data:{
+                 services_price:[
+                     {
+                         name:"java课程",
+                         price:200,
+                         active:false
+                     } ,
+                     {
+                         name:"html课程",
+                         price:100,
+                         active:false
+                     } ,
+                     {
+                         name:"vuejs课程",
+                         price:100,
+                         active:false
+                     }
+
+                 ]
+             },
+             methods:{
+                 changeclass:function(ms){
+                     ms.active = !ms.active;
+                 },
+                 totalPrice:function(){
+                     var total = 0;
+                     this.services_price.forEach(function(x){
+                         if(x.active){
+                             total += x.price;
+                         }
+                     });
+                     return total;
+                 }
+
+             }
+         })
+     </script>
+</body>
+</html>
