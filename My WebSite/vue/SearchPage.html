@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索页面</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            font:16px/1.5 Microsoft YaHei;
+            color: #5e5b64;
+        }
+        a,a:visited{
+            outline: none;
+            color: #00ccff;
+        }
+        a:hover{
+            text-decoration:none;
+        }
+        nav,header,section,aside,footer{
+            display: block;
+        }
+
+        #ipt{
+            margin: 45px  auto 20px;
+            width: 400px;
+            background-color: #3399ff;
+            background-image: -webkit-linear-gradient(top,#3399ff ,#1dff2b);
+            box-shadow:0 1px 1px #ccc;
+            border-radius:3px;
+            padding: 15px;
+            text-align: center;
+
+        }
+        #ipt input{
+            background:#fff no-repeat 5px 5px;
+            background-image: url(../images/seach.png);
+            border:none;
+            width: 100%;
+            padding:10px 0;
+            border-radius:3px;
+            box-shadow:0 2px 8px #c4c4c4;
+            text-align: left;
+            text-indent: 40px;
+            outline: none;
+            font-weight: bold;
+            color:#1dff2b;
+            font-size: 20px;
+            line-height: 21px;
+        }
+        ul{
+            list-style: none;
+            width: 430px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        ul li{
+            padding:10px;
+            border-bottom:1px solid #ddd;
+            word-wrap: break-word;
+            overflow: hidden;
+        }
+        img{
+            width: 60px;
+            height:60px;
+            float: left;
+            border: none;
+        }
+        ul li p{
+            font-weight: bold;
+            padding-top: 12px;
+            color: #99CCFF;
+            margin-left: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="Spage">
+        <div id="ipt">
+            <input type="text" v-model="searchingtext" placeholder="请输入搜索内容">
+        </div>
+        <ul>
+            <li v-for="item in  filteredarticles">
+                <a v-bind:href="item.url"><img v-bind:src="item.image"></a>
+                <p>{{item.title}}</p>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var spage = new Vue({
+            el:"#Spage",
+            data:{
+                searchingtext:"",
+                articles:[
+                    {
+                        title:"What You Need To Know About CSS Variables",
+                        url:"https://www.runoob.com/css/css-tutorial.html",
+                        image:"../images/bg6.JPG"
+                    },
+                    {
+                        title:"Creating Your First Desktop App With HTML, JS and Electron",
+                        url:"https://www.runoob.com/css/css-tutorial.html",
+                        image:"../images/bg6.JPG"
+                    },
+                    {
+                        title:"Learn SQL In 20 Minutes",
+                        url:"https://www.runoob.com/css/css-tutorial.html",
+                        image:"../images/bg6.JPG"
+                    },
+                    {
+                        title:"Quick Tip: The Easiest Way To Make Responsive Headers",
+                        url:"https://www.runoob.com/css/css-tutorial.html",
+                        image:"../images/bg6.JPG"
+                    },
+                    {
+                        title:"20 Interesting JavaScript and CSS Libraries for February 2016",
+                        url:"https://www.runoob.com/css/css-tutorial.html",
+                        image:"../images/bg6.JPG"
+                    },
+                    {
+                        title:"Freebie: 4 Great Looking Pricing Tables",
+                        url:"https://www.runoob.com/css/css-tutorial.html",
+                        image:"../images/bg6.JPG"
+                    }
+                ]
+            },
+            computed:{
+                filteredarticles:function(){
+                    var arr_articles = this.articles,
+                        searchingString = this.searchingtext;
+                    if(!searchingString){
+                        return arr_articles;
+                    }
+                    searchingString = searchingString.trim().toLowerCase();
+                    arr_articles = arr_articles.filter(function(m){
+                         if(m.title.toLocaleLowerCase().indexOf(searchingString) !== -1){
+                              return m;
+                         }
+                    })
+                    return arr_articles;
+                }
+
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue.js 导航菜单</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        ul {
+            width: 500px;
+            height: 100px;
+        }
+
+        ul li {
+            width: 100px;
+            list-style: none;
+            height: 50px;
+            line-height: 50px;
+            display: inline-block;
+            background: #00ccff;
+            text-align: center;
+            color: #000;
+        }
+
+        ul li.active{
+            background-color:#e35885;
+            color: #FFF;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <div>
+        <div id="main">
+            <ul>
+                <li v-for="m in obj" v-bind:class="{'active':m.isactive}" @click="makeActive(m)">
+                    {{m.name}}
+                </li>
+                <!--<li  v-bind:class="{'active':obj.isactive }" @click="makeActive('obj')">Projects</li>-->
+                <!--<li  v-bind:class="{'active':obj.isactive }" @click="makeActive('obj')">Services</li>-->
+                <!--<li  v-bind:class="{'active':obj.isactive}" @click="makeActive('obj')">Contact</li>-->
+            </ul>
+        </div>
+    </div>
+
+
+<script>
+    // 创建一个新的 Vue 实例
+    var demo = new Vue({
+        // DOM 元素，挂载视图模型
+        el: '#main',
+
+        // 定义属性，并设置初始值
+        data: {
+            obj:[
+                {name:"home",isactive:true},
+                {name:"projects",isactive:false},
+                {name:"services",isactive:false},
+                {name:"contact",isactive:false}
+            ]
+
+
+                // isactive: true,
+                // isactive1: false,
+                // isactive2: false,
+                // isactive3: false,
+        },
+
+        // 点击菜单使用的函数
+        methods: {
+            makeActive: function(sm){
+                sm.isactive = !sm.isactive;
+                // 模型改变，视图会自动更新
+                // console.log();
+            //     if(!this.isactive) {
+            //         this.isactive = true;
+            //     }else{
+            //         this.isactive = false;
+            //     }
+            // },
+            // makeActive1: function(){
+            //     // 模型改变，视图会自动更新
+            //     if(!this.isactive1) {
+            //         this.isactive1 = true;
+            //     }else{
+            //         this.isactive1 = false;
+            //     }
+            // },
+            // makeActive2: function(){
+            //     // 模型改变，视图会自动更新
+            //     if(!this.isactive2) {
+            //         this.isactive2 = true;
+            //     }else{
+            //         this.isactive2 = false;
+            //     }
+            // },
+            // makeActive3: function(){
+            //     // 模型改变，视图会自动更新
+            //     if(!this.isactive3) {
+            //         this.isactive3 = true;
+            //     }else{
+            //         this.isactive3 = false;
+            //     }
+            }
+        }
+    });
+</script>
+</body>
+</html>

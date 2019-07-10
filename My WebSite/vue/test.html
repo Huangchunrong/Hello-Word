@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{m}}
+    </div>
+    <div id="app1">
+        <span v-bind:title="massage">悬停几秒查看此处字符串</span>
+    </div>
+    <div id="app2">
+        <p v-if="seen">现在你看到我了。</p>
+    </div>
+    <div id="app3">
+        <ol>
+         <li v-for="tx in arr">
+            {{tx.text}}
+         </li>
+        </ol>
+    </div>
+    <div id="app4">
+        {{text}}
+        <button v-on:click="change">反转消息</button>
+    </div>
+    <div id="app5">
+        <p>{{ms}}</p>
+        <input v-model="ms">
+    </div>
+    <div id="app6">
+        <ol>
+            <zj-item v-for="x in testlist" v-bind:send="x" v-bind:key="x.id"></zj-item>
+        </ol>
+    </div>
+    <div id="app7">
+        <button-c></button-c>
+    </div>
+
+    <div id="app8">
+        <p>这是正常的字符串：{{massage}}</p>
+        <p>这是反转后的字符串：{{change1}}</p>
+    </div>
+
+    <div id="app9">
+        {{fullname}}
+    </div>
+    <div id="vm">
+        {{fulln}}
+    </div>
+    <div id="app10">
+        <ul>
+            <li v-for="(it,index) in items">
+               {{parentM}}-{{index}}-{{it.text}}
+            </li>
+        </ul>
+    </div>
+    <div id="app11">
+        <ul>
+            <li v-for="(m,name,index) in object">
+                <p >{{index}}.{{name}}:{{m}}</p>
+            </li>
+        </ul>
+    </div>
+    <div id="bm">
+        <form v-on:submit.prevent="addNewTodo">
+            <label for="new-todo" >add a todo</label>
+            <input id="new-todo" v-model = "NewText" placeholder="and so on!">
+            <button>add</button>
+        </form>
+        <ul>
+            <li
+                    is = "todo-item"
+                    v-for="(m,index) in todos"
+                    v-bind:key="m.id"
+                    v-bind:text="m.title"
+                    v-on:remove="todos.splice(index,1)"
+            ></li>
+        </ul>
+    </div>
+<!--表单的输入-->
+    <div id="bdan">
+        <input v-model="massage" placeholder="编辑我">
+        <p>信息文本是:{{massage}}</p>
+    </br>
+        <span>multiline massage is:</span>
+        <p style="white-space: pre-line">{{massage1}}</p>
+        <textarea v-model="massage1" placeholder="add multiple lines"></textarea></br>
+
+        <input type="checkbox" id="checkbox" v-model="check" >
+        <label for="checkbox">{{check}}</label><br>
+
+        <input type="checkbox" id="mile" value="miles" v-model="checknames">
+        <label for="name">mile</label>
+        <input type="checkbox" id="apple" value="apples" v-model="checknames">
+        <label for="apple">apple</label>
+        <input type="checkbox" id="orange" value="oranges" v-model="checknames">
+        <label for="orange">orange</label><br>
+        <span>checked names is:{{checknames}}</span><br>
+
+        <input type="radio" id="one" value="ones" v-model="pick">
+        <label for="one">one apple</label>
+        <input type="radio" id="two" value="twos" v-model="pick">
+        <label for="two">two orange</label><br>
+        <span>Picked:{{pick}}</span><br>
+
+        <select v-model="selected">
+            <option disabled value="">请选择</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>selected:{{selected}}</span><br>
+
+        <select v-model="select" multiple style="width: 60px">
+            <option>D</option>
+            <option>E</option>
+            <option>F</option>
+            <option>G</option>
+        </select><br>
+        <span>Multiple:{{select}}</span><br>
+
+        <select v-model="selectedf">
+            <option v-for="list in options" v-bind:value="list.value">
+                {{list.text}}
+            </option>
+        </select>
+        <span>selected:{{selectedf}}</span><br>
+    </div>
+    <div id="zj">
+        <bt-count></bt-count>
+        <bt-count></bt-count>
+        <br>
+        <div :style="{fontSize:fontcge + 'em'}">
+            <z-value v-for="text in contents"
+                 v-bind:key="text.id"
+                 v-bind:text="text"
+                 v-on:font-change="fontcge += 0.1"
+            ></z-value>
+        </div>
+    </div>
+
+    <script src="../js/vue-test.js"></script>
+</body>
+</html>
