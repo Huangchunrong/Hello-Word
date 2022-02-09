@@ -12,7 +12,13 @@ git remote add origin https://github.com/Huangchunrong/Hello-Word.git   关联Gi
 git pull --rebase origin master
 
 git push -u origin master
-
+GitHub最新的命令 默认main 为默认仓库
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Huangchunrong/supermall.git
+git push -u origin main
 2 .删除某个文件或文件夹
 在github上只能删除仓库,却无法删除文件夹或文件, 所以只能通过命令来解决
 
